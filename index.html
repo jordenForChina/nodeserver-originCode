@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="jorden">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-controller="news">
+		{{name}}
+	</div>
+	<script src="angular.min.js"></script>
+	<script type="text/javascript">
+		var app = angular.module('jorden', []);
+		app.controller('news', ['$scope','$http', function($scope,$http){
+			$scope.name="jorden";
+			var url = "http://10.3.131.240:8888/getApi?callback=JSON_CALLBACK&page=1";
+			$http.jsonp(url).success(function(data){
+				console.log(data)
+			})
+		}])
+	</script>
+</body>
+</html>
